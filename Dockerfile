@@ -28,8 +28,8 @@ RUN \
     libcap-utils \
     libqrencode-tools \
     net-tools \
-    openresolv && \
-  echo "wireguard" >> /etc/modules && \
+    openresolv
+RUN echo "wireguard" >> /etc/modules && \
   cd /sbin && \
   for i in ! !-save !-restore; do \
     rm -rf iptables$(echo "${i}" | cut -c2-) && \
