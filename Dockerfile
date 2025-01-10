@@ -29,7 +29,6 @@ RUN \
     libqrencode-tools \
     net-tools \
     openresolv \
-    wireguard-tools==${WIREGUARD_RELEASE} && \
   echo "wireguard" >> /etc/modules && \
   cd /sbin && \
   for i in ! !-save !-restore; do \
