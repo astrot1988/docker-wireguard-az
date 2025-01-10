@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-
+FROM amneziavpn/amneziawg-go as awg
 FROM ghcr.io/linuxserver/baseimage-alpine:3.21
 
 # set version label
@@ -45,6 +45,16 @@ RUN \
   echo "**** clean up ****" && \
   rm -rf \
     /tmp/*
+
+COPY --from=awg /usr/bin/amneziawg-go /usr/bin/amneziawg-go
+
+RUN apk --no-cache add iproute2 iptables bash && \
+    cd /usr/bin/ && \
+    wget https://github.com/amnezia-vpn/amneziawg-tools/releases/download/v1.0.20241018/alpine-3.19-amneziawg-tools.zip && \
+    unzip -j alpine-3.19-amneziawg-tools.zip && \
+    chmod +x /usr/bin/awg /usr/bin/awg-quick && \
+    ln -s /usr/bin/awg /usr/bin/wg && \
+    ln -s /usr/bin/awg-quick /usr/bin/wg-quick
 
 # add local files
 COPY /root /
