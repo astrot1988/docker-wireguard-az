@@ -33,4 +33,4 @@ jobs:
       with:
         push: true
         platforms: linux/amd64
-        tags: ghcr.io/astrot1988/docker-wireguard-az:latest, ghcr.io/astrot1988/docker-wireguard-az:${{ env.RELEASE }}
+        tags: ghcr.io/astrot1988/docker-wireguard-az:latest, ghcr.io/astrot1988/docker-wireguard-az:latest
