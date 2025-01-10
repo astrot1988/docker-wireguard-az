@@ -28,7 +28,7 @@ RUN \
     libcap-utils \
     libqrencode-tools \
     net-tools \
-    openresolv \
+    openresolv && \
   echo "wireguard" >> /etc/modules && \
   cd /sbin && \
   for i in ! !-save !-restore; do \
